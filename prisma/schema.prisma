@@ -1,0 +1,239 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextSearch"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                 Int              @id @default(autoincrement())
+  username           String           @unique
+  slug               String           @unique
+  email              String           @unique
+  password           String
+  refreshToken       String?
+  profileImgUrl      String?          @default("")
+  regDate            DateTime?        @default(now())
+  ipAdress           String?
+  isAdmin            Boolean          @default(false)
+  topics             Topic[]          @relation("wrtten topics")
+  materials          Material[]       @relation("wrttenMaterials")
+  topicsUserFollowed Topic[]
+  followedBy         Follow[]         @relation("following")
+  following          Follow[]         @relation("follower")
+  role               Role             @default(STUDENT)
+  faculty            Faculty?         @relation(fields: [facultyId], references: [id])
+  facultyId          Int?
+  department         Department?      @relation(fields: [departmentId], references: [id])
+  departmentId       Int?
+  bio                String?
+  likedTopics        Topiclike[]
+  likedComments      CommentLike[]
+  likedReplies       ReplyLike[]
+  likedMaterials     materialLike[]
+  level              Int              @default(100)
+  whatsApp           String?
+  coverImgUrl        String?
+  SavedTopics        SavedTopics[]
+  SavedMaterials     SavedMaterials[]
+}
+
+model Follow {
+  follower    User @relation("follower", fields: [followerId], references: [id])
+  followerId  Int
+  following   User @relation("following", fields: [followingId], references: [id])
+  followingId Int
+
+  @@id([followerId, followingId])
+}
+
+enum Role {
+  STUDENT
+  CLASS_REP
+  SU_EXCO
+  ADMIN
+  MODERATOR
+  PUBLISER
+}
+
+enum Status {
+  PUBLISHED
+  TRASHED
+  DRAFT
+  PENDING
+}
+
+model Topic {
+  id             Int              @id @default(autoincrement())
+  title          String
+  pinned         Boolean          @default(false)
+  slug           String           @unique
+  status         Status           @default(PENDING)
+  content        String
+  createdDate    DateTime?        @default(now())
+  updatedDate    DateTime?        @default(now())
+  author         User             @relation("wrtten topics", fields: [authorId], references: [id])
+  authorId       Int
+  coverImageUrl  String?
+  viwes          Int?             @default(1)
+  followers      User[]
+  Category       Category?        @relation(fields: [categoryId], references: [id])
+  categoryId     Int?
+  comments       Comment[]
+  likes          Topiclike[]
+  savedTopics    SavedTopics[]
+  savedMaterials SavedMaterials[]
+  shareCount     Int?             @default(0)
+  upload         TopicUpload[]
+}
+
+model SavedTopics {
+  id           Int   @id @default(autoincrement())
+  userId       User  @relation(fields: [SavedUserId], references: [id])
+  SavedUserId  Int
+  topicId      Topic @relation(fields: [SavedTopicId], references: [id])
+  SavedTopicId Int
+}
+
+model Topiclike {
+  id           Int   @id @default(autoincrement())
+  userId       User  @relation(fields: [likeUserId], references: [id])
+  topicId      Topic @relation(fields: [likedTopicId], references: [id])
+  likedTopicId Int
+  likeUserId   Int
+}
+
+model Comment {
+  id           Int           @id @default(autoincrement())
+  slug         String
+  content      String
+  Topic        Topic?        @relation(fields: [topicId], references: [id])
+  topicId      Int?
+  materials    Material?     @relation(fields: [materialsId], references: [id])
+  materialsId  Int?
+  replys       Reply[]
+  CommentLikes CommentLike[]
+}
+
+model CommentLike {
+  id          Int     @id @default(autoincrement())
+  userId      User    @relation(fields: [likedUserId], references: [id])
+  commentId   Comment @relation(fields: [commentsId], references: [id])
+  likedUserId Int
+  commentsId  Int
+}
+
+model Reply {
+  id         Int         @id @default(autoincrement())
+  slug       String
+  content    String
+  Comments   Comment?    @relation(fields: [commentsId], references: [id])
+  commentsId Int?
+  ReplyLikes ReplyLike[]
+}
+
+model ReplyLike {
+  id         Int   @id @default(autoincrement())
+  userId     User  @relation(fields: [likeUserId], references: [id])
+  replyId    Reply @relation(fields: [replysId], references: [id])
+  likeUserId Int
+  replysId   Int
+}
+
+model Material {
+  id           Int            @id @default(autoincrement())
+  title        String
+  status       Status         @default(PENDING)
+  pinned       Boolean        @default(false)
+  slug         String         @unique
+  description  String
+  createdDate  DateTime?      @default(now())
+  updatedDate  DateTime?      @default(now())
+  author       User           @relation("wrttenMaterials", fields: [authorId], references: [id])
+  authorId     Int
+  viwes        Int?           @default(0)
+  comments     Comment[]
+  courseCode   CourseCode     @relation(fields: [courseCodeId], references: [id])
+  courseCodeId Int
+  faculty      Faculty[]
+  department   Department[]
+  materialLike materialLike[]
+  uploads      upload[]
+}
+
+model TopicUpload {
+  id      Int     @id @default(autoincrement())
+  link    String
+  size    String?
+  name    String?
+  topic   Topic   @relation(fields: [topicId], references: [id])
+  topicId Int
+}
+
+model SavedMaterials {
+  id           Int   @id @default(autoincrement())
+  userId       User  @relation(fields: [SavedUserId], references: [id])
+  SavedUserId  Int
+  topicId      Topic @relation(fields: [SavedTopicId], references: [id])
+  SavedTopicId Int
+}
+
+model materialLike {
+  id         Int      @id @default(autoincrement())
+  userId     User     @relation(fields: [likedUserId], references: [id])
+  materialId Material @relation(fields: [likedMaterialId], references: [id])
+
+  likedUserId     Int
+  likedMaterialId Int
+}
+
+model upload {
+  id         Int       @id @default(autoincrement())
+  link       String
+  size       String?
+  name       String?
+  material   Material? @relation(fields: [materialId], references: [id])
+  materialId Int?
+}
+
+model CourseCode {
+  id        Int        @id @default(autoincrement())
+  name      String     @unique
+  slug      String     @unique
+  materials Material[]
+}
+
+model Faculty {
+  id          Int          @id @default(autoincrement())
+  name        String       @unique
+  slug        String       @unique
+  user        User[]
+  materials   Material?    @relation(fields: [materialsId], references: [id])
+  materialsId Int?
+  Departments Department[]
+}
+
+model Department {
+  id          Int       @id @default(autoincrement())
+  name        String    @unique
+  slug        String    @unique
+  User        User[]
+  materials   Material? @relation(fields: [materialsId], references: [id])
+  materialsId Int?
+  faculty     Faculty?  @relation(fields: [facultyId], references: [id])
+  facultyId   Int?
+}
+
+model Category {
+  id       Int     @id @default(autoincrement())
+  title    String? @unique
+  slug     String?
+  forAdmin Boolean
+  topics   Topic[]
+}

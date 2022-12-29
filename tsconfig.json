@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "outDir": "./outDir",
+    "allowSyntheticDefaultImports": true
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "src/components/newTopic/contentInput.jsx",
+    "context/authProvider.js",
+    "functions/index.js",
+    "src/pages/api/uploads/pdfuploads.js",
+    "src/pages/api/uploads/coverimage.ts",
+    "src/components/newTopic/textArea.jsx",
+    "src/components/newTopic/index.tsx",
+    "server.js"
+  ],
+  "exclude": ["node_modules"]
+}
