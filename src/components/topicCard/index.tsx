@@ -61,11 +61,11 @@ export default function TopicCard({ topic }: TopicCardProps) {
           </div>
           <div className='flex  space-x-2 text-[10px] items-center '>
             <div className='flex space-x-1 items-center space-around'>
-              <BsEye className=' font-bold   text-[#ff0000]' />
+              <BsEye className=' font-bold   text-[#ff9912]' />
               <span className=''>{abbreviateNumber(topic.viwes)}</span>
             </div>
             <div className='flex items-center space-x-1'>
-              <BsFillHeartFill className='text-[#ff0000] ' />
+              <BsFillHeartFill className='text-[#ff9912] ' />
               <span className=' font-bold'>
                 {abbreviateNumber(topic.likes.length)}
               </span>

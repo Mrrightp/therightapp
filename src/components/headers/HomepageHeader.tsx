@@ -32,7 +32,7 @@ export default function HomePageHeader({}: HomePageHeaderProps) {
         <div className='heade-logo font-extrabold text-xl'>
           <Link href={'/'}>
             <a>
-              <Image src={'/uniforumlogo.png'} height={50} width={50} alt='' />
+              <Image src={'/uniforumlogo.png'} height={25} width={25} alt='' />
             </a>
           </Link>
         </div>

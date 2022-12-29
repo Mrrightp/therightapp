@@ -84,14 +84,6 @@ h6 {
   font-weight: 300;
 }
 
-.topic-card-middle {
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 700;
-  line-height: 18px;
-  letter-spacing: 0.02em;
-  color: #000000;
-}
 .bottom-nav {
   left: 32px;
   right: 32px;
@@ -131,7 +123,7 @@ h6 {
 .topic-card-middle {
   font-family: 'Poppins';
   font-style: normal;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 18px;
   letter-spacing: 0.02em;
 
@@ -144,8 +136,8 @@ h6 {
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 300;
-  font-size: 8px;
-  line-height: 12px;
+  font-size: 10px;
+  line-height: 14px;
   /* identical to box height */
 
   color: #000000;
