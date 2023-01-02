@@ -7,7 +7,6 @@ export default async function handler(
 ) {
   try {
     const { shareCount, topicId } = req.body;
-    console.log(req.body);
     const addShare = await prisma.topic.update({
       where: {
         id: topicId,
@@ -16,7 +15,6 @@ export default async function handler(
         shareCount: shareCount,
       },
     });
-    console.log(addShare);
     res.json({
       message: 'successfull',
       success: true,

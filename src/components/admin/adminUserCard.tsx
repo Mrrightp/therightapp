@@ -14,6 +14,7 @@ type Props = {
 
 export default function AdminUserCard({ userData }: Props) {
   const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div className='p-2 cursor-default m-1 w-full border-black space-y-1 border'>
       <div className='flex space-x-4'>
@@ -43,6 +44,10 @@ export default function AdminUserCard({ userData }: Props) {
                 userId: userData.id,
               };
               const newAdmin = await axios.post('/api/users/makeadmin', data);
+
+              if (newAdmin) {
+                Router.push(`/user/${userData.slug}`);
+              }
             }}
             className=' items-center space-x-1 px-1 w-fit border border-black flex'
           >

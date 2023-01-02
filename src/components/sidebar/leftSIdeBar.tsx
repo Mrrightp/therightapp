@@ -15,7 +15,6 @@ type Props = {};
 export default function LeftSIdeBar({}: Props) {
   const router = useRouter();
   const currentRouter = router.asPath;
-  console.log(currentRouter);
   const { auth }: any = useAuth();
 
   return (

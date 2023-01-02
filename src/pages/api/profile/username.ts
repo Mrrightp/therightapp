@@ -12,7 +12,6 @@ export default async function handler(
 ) {
   const data = req.body;
   const { username, userId, email } = data;
-  console.log(userId);
   try {
     if (username.length > 15) {
       res.json({

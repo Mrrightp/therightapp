@@ -35,18 +35,7 @@ export default async function handler(
       message: 'please select a category',
     });
   }
-
-  const getTopicSlugs = await prisma.topic.findUnique({
-    where: {
-      slug: topicSlug,
-    },
-  });
-  if (getTopicSlugs) {
-    res.json({
-      success: false,
-      message:
-        'this title has already been used, you need to make your title unique',
-    });
+  if (false) {
   } else {
     try {
       const createTopic = await prisma.topic.update({
@@ -70,7 +59,6 @@ export default async function handler(
           },
         },
       });
-      console.log(createTopic.id);
       if (createTopic.id) {
         res.json({
           success: true,

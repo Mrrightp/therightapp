@@ -6,7 +6,6 @@ import NotFound from '../components/404';
 
 export default function Name(props: any) {
   // const nameQuery = trpc.useQuery(["names.getName", { name: "nexxel" }]);
-  console.log(props);
 
   if (props.topics) {
     return (

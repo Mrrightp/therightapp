@@ -12,7 +12,6 @@ export default async function handler(
     strict: true,
     lower: true,
   });
-  console.log(data);
   const currentCourseCode = await prisma.courseCode.findMany({
     where: {
       name: data.name,
@@ -31,7 +30,6 @@ export default async function handler(
         slug: slug,
       },
     });
-    console.log(newCourseCode);
     res.json({
       message: newCourseCode,
       success: true,

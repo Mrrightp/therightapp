@@ -7,13 +7,11 @@ export default async function handler(
 ) {
   try {
     const { savedId } = req.body;
-    console.log(req.body);
     const deleteLike = await prisma.savedTopics.delete({
       where: {
         id: savedId,
       },
     });
-    console.log(deleteLike, 'gggggg');
 
     if (deleteLike) {
       res.send({

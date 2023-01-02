@@ -6,7 +6,6 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const searchString = req.body.searchString;
-  console.log(searchString);
   const result = await prisma.topic.findMany({
     where: {
       title: {

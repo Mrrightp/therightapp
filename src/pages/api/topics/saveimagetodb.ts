@@ -21,7 +21,6 @@ export default async function handler(
     },
   });
 
-  console.log(saveToDb);
   if (saveToDb) {
     res.status(200).json({
       id: saveToDb.id,

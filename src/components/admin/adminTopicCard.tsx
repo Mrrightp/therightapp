@@ -13,8 +13,6 @@ type Props = {
 };
 
 export default function AdminTopicCard({ topicData }: Props) {
-  console.log(topicData);
-
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className='p-2 cursor-default m-1 w-full border-black space-y-1 border'>
@@ -49,8 +47,9 @@ export default function AdminTopicCard({ topicData }: Props) {
                 '/api/topics/changestatus',
                 data
               );
+
               if (publish) {
-                Router.push(Router.asPath);
+                Router.push(`/topic/${topicData.slug}`);
               }
             }}
             className=' items-center space-x-1 px-1 w-fit border border-black flex'

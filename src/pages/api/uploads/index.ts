@@ -22,7 +22,7 @@ export default async function handler(
 
   try {
     let { name, type, folder } = req.body;
-    console.log(name);
+
     const year = dayjs().format('YYYY');
     const id = v4().substring(0, 6);
     const Url = `${year}/${id}-${name}`;
@@ -34,7 +34,7 @@ export default async function handler(
     };
 
     const url = await s3.getSignedUrlPromise('putObject', fileParams);
-    console.log(url, Url);
+
     res.status(200).json({ success: true, url: url, Url: Url });
   } catch (err) {
     console.log(err);

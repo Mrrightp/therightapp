@@ -13,7 +13,6 @@ export default async function handler(
         likeUserId: userId,
       },
     });
-    console.log(findLike, 'findLike');
     if (findLike.length > 0) {
       res.send({
         success: false,
@@ -35,7 +34,6 @@ export default async function handler(
           },
         },
       });
-      console.log(createLike, 'gggggg');
       if (createLike) {
         res.send({
           success: true,

@@ -32,7 +32,7 @@ export default async function handler(
     };
 
     const url = await s3.getSignedUrlPromise('putObject', fileParams);
-    console.log(url);
+
     res.status(200).json({ success: true, url: url, imgUrl: imgUrl });
   } catch (err) {
     console.log(err);

@@ -17,7 +17,7 @@ export default function HomePageHeader({}: HomePageHeaderProps) {
     showNotification ? setShowNotification(false) : setShowNotification(true);
   };
   const info = () => {
-    toast('Cannot perform this opration at this time', {
+    toast('Cannot perform this operation at this time', {
       icon: '😢',
     });
   };

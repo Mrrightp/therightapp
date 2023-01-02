@@ -30,7 +30,6 @@ export default function NewTopic({ topic }: any) {
   const [catOptions, setCatOptions] = useState([{}]);
   const [screenshoots, setScreenShoots]: any = useState('');
   const { auth }: any = useAuth();
-  console.log(auth.role);
 
   useEffect(() => {
     if (topic.id) {
@@ -102,7 +101,6 @@ export default function NewTopic({ topic }: any) {
         `/api/topics/${topic.id ? 'update' : 'create'}`,
         payload
       );
-      console.log(sendTopic);
 
       if (!sendTopic.data.success) {
         toast.update(ToastId, {
@@ -389,9 +387,8 @@ export default function NewTopic({ topic }: any) {
           }}
           className='border rounded px-3 font-extrabold bg-white text-[#0d0331] px-1sssssssss '
         >
-          Publish
+          {!topic.id ? 'Publish' : 'Update'}
         </span>
-
         <span>Save</span>
         <AiFillSetting className='text-xl' />
       </div>

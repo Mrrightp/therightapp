@@ -134,7 +134,7 @@ export default function TopicBottom({
 
   return (
     <>
-      <div className='w-full hidden'>
+      <div className={`w-full ${auth.role == 'ADMIN' ? null : 'hidden'}`}>
         <div className='text-2xl w-full Topic-bottom fixed z-10  items-center flex justify-around '>
           <div className='flex space-x-[5px]'>
             <div className='flex  items-center '>

@@ -16,12 +16,10 @@ const MyApp: AppType = ({ Component, pageProps }: any) => {
   const router = useRouter();
   useEffect(() => {
     router.events.on('routeChangeStart', (url) => {
-      console.log('Route is changing...');
       NProgress.start();
       setLoading(true);
     });
     router.events.on('routeChangeComplete', (url) => {
-      console.log('Route changing completed...');
       NProgress.done();
       setLoading(false);
     });

@@ -14,17 +14,15 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
   const body = req.body;
-  console.log(body);
   //   res.send('error');
   const date = Date.now();
-  const salt = genSaltSync(10)
+  const salt = genSaltSync(10);
   body.password = hashSync(body.password, salt);
   const password = body.password;
   try {
     const emailResult = await prisma.user.findMany({
       where: { email: body.email },
     });
-    console.log('ffff', emailResult);
     if (emailResult.length >= 1) {
       res.send({
         success: 0,
@@ -46,7 +44,11 @@ export default async function handler(
             email: email,
             username: username,
             password: password,
-            slug: slugify(username, { replacement: '_', strict:true, lower:true}),
+            slug: slugify(username, {
+              replacement: '_',
+              strict: true,
+              lower: true,
+            }),
           },
         });
         if (user) {

@@ -34,7 +34,6 @@ export default async function handler(
       id: 'desc',
     },
   });
-  console.log(materialTopLikes);
   res.json({
     message: 'successful',
     success: true,

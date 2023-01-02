@@ -7,13 +7,11 @@ export default async function handler(
 ) {
   try {
     const { likeId } = req.body;
-    console.log(req.body);
     const deleteLike = await prisma.topiclike.delete({
       where: {
         id: likeId,
       },
     });
-    console.log(deleteLike, 'gggggg');
 
     if (deleteLike) {
       res.send({

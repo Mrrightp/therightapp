@@ -19,7 +19,6 @@ export default async function handler(
   let results = await prisma.user.findMany({
     where: { email: body.email },
   });
-  // console.log(results);
   if (results.length === 0) {
     res.json({
       success: 0,
@@ -27,7 +26,6 @@ export default async function handler(
     });
   } else {
     const resultData: any = results[0];
-    console.log(body.password, resultData.password);
     const result = compareSync(body.password, resultData.password);
     if (result) {
       resultData.password = undefined;

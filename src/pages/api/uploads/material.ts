@@ -21,7 +21,7 @@ export default async function handler(
 
   try {
     let { name, type, level } = req.body;
-    console.log(name);
+
     const year = dayjs().format('YYYY');
     const id = v4().substring(0, 6);
     const materialUrl = slugify(`${year}/${id}-${name}`, {

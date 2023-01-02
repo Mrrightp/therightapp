@@ -7,6 +7,7 @@ import { BsEyeFill } from 'react-icons/bs';
 import { GiLoveHowl } from 'react-icons/gi';
 import TopicBottom from './topicBottom';
 import Replys from '../replys';
+import TopicCard from '../topicCard';
 export interface SingleTopicProps {
   topic: any;
   topicLikes: any;
@@ -18,6 +19,7 @@ export default function SingleTopic({
   topicSaved,
 }: SingleTopicProps) {
   const [followingState, setFollowingState] = useState(false);
+
   const [isReply, setIsReply] = useState(false);
 
   const toggleFollow = () => {
@@ -27,6 +29,9 @@ export default function SingleTopic({
       setFollowingState(true);
     }
   };
+  const Newtopics = topic.Category.topics.filter((newtopic: any) => {
+    return newtopic.id !== topic.id;
+  });
 
   const toggleReply = () => {
     if (isReply) {
@@ -111,7 +116,7 @@ export default function SingleTopic({
             dangerouslySetInnerHTML={{ __html: topic.content }}
             className={`${
               topic.trashed ? 'text-[#f50909]' : ''
-            } text-justify text-sm `}
+            } text-justify text-sm leading-7 `}
           ></div>
           <div id='ezoic-pub-ad-placeholder-609'> </div>
           {topic.upload.lenght ? (
@@ -135,6 +140,12 @@ export default function SingleTopic({
             </div>
           ) : null}
         </div>
+      </div>
+      <div className=' pb-60 '>
+        <h2 className='border-b mx-1 border-black'>--Related Topics</h2>
+        {Newtopics.map((topic: any) => (
+          <TopicCard key={topic.id} topic={topic} />
+        ))}
       </div>
       {isReply ? null : (
         <TopicBottom

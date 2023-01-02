@@ -27,7 +27,6 @@ export default function User({ userInfo }: IUserProps) {
 }
 export async function getServerSideProps(context: any) {
   const { slug } = context.params;
-  console.log(slug);
 
   const getUserInfo = await prisma.user.findFirst({
     where: {
@@ -56,7 +55,6 @@ export async function getServerSideProps(context: any) {
     },
   });
   const userdata = JSON.parse(JSON.stringify(getUserInfo));
-  // console.log(userdata, 'dd');
 
   return {
     props: { userInfo: userdata },

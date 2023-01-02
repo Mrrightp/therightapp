@@ -7,7 +7,6 @@ export default async function handler(
 ) {
   try {
     const { viwesCount, topicId } = req.body;
-    console.log(req.body);
     const addViwe = await prisma.topic.update({
       where: {
         id: topicId,
@@ -16,7 +15,6 @@ export default async function handler(
         viwes: viwesCount,
       },
     });
-    console.log(addViwe);
     res.json({
       message: 'successfull',
       success: true,

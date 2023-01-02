@@ -59,7 +59,6 @@ class ContentInputComponent extends React.Component {
 
   onChange = (editorState) => {
     const contentState = editorState.getCurrentContent();
-    //          console.log('content state', convertToRaw(contentState));
 
     this.props.handletopicContentChange(convertToRaw(contentState));
 
@@ -139,7 +138,6 @@ class ContentInputComponent extends React.Component {
   };
 
   _handleBeforeInput = () => {
-    console.log('hello');
     const currentContent = this.state.editorState.getCurrentContent();
     const currentContentLength = currentContent.getPlainText('').length;
 

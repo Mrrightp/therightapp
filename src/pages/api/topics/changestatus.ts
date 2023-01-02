@@ -15,7 +15,7 @@ export default async function handler(
         status: data.status,
       },
     });
-    console.log(updateStaus);
+    res.json(updateStaus);
   } catch (error) {
     console.log(error);
   }

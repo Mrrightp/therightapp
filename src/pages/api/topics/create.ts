@@ -67,7 +67,6 @@ export default async function handler(
           },
         },
       });
-      console.log(createTopic.id);
       if (createTopic.id) {
         res.json({
           success: true,

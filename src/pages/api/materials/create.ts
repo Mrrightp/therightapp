@@ -10,17 +10,13 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  console.log(req.body);
-
   const body = req.body;
-  console.log(body, 'kl');
   const title = body.title;
   let topicSlug = slugify(body.title, {
     replacement: '-',
     strict: true,
     lower: true,
   });
-  console.log(topicSlug);
   if (wordCount(title) < 4) {
     return res.json({
       success: false,
@@ -37,7 +33,6 @@ export default async function handler(
         slug: topicSlug,
       },
     });
-    console.log('getTopicSlugs', getTopicSlugs);
 
     if (getTopicSlugs) {
       res.json({
@@ -69,7 +64,6 @@ export default async function handler(
             },
           },
         });
-        console.log(createTopic.id);
         if (createTopic.id) {
           res.json({
             success: 1,

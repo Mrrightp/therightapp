@@ -2,9 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import BottomNav from '../components/mobleBottom';
 
-type Props = {};
-
-export default function NotFound({}: Props) {
+export default function NotFound() {
   return (
     <>
       <div className='p-10 flex flex-col items-center justify-center'>

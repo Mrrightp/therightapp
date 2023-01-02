@@ -59,6 +59,13 @@ export async function getServerSideProps(context: any) {
         select: {
           title: true,
           slug: true,
+          topics: {
+            include: {
+              author: true,
+              likes: true,
+              Category: true,
+            },
+          },
         },
       },
       upload: true,

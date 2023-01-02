@@ -6,7 +6,6 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const data: any = req.body;
-  console.log(data.UploadUrl);
   const saveToDb = await prisma.upload.create({
     data: {
       link: data.UploadUrl,
@@ -20,7 +19,6 @@ export default async function handler(
     },
   });
 
-  console.log(saveToDb);
   if (saveToDb) {
     res.status(200).json({
       id: saveToDb.id,
