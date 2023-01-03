@@ -8,6 +8,7 @@ import { GiLoveHowl } from 'react-icons/gi';
 import TopicBottom from './topicBottom';
 import Replys from '../replys';
 import TopicCard from '../topicCard';
+import { relativeDate } from '../../utils/dayjs';
 export interface SingleTopicProps {
   topic: any;
   topicLikes: any;
@@ -32,6 +33,7 @@ export default function SingleTopic({
   const Newtopics = topic.Category.topics.filter((newtopic: any) => {
     return newtopic.id !== topic.id;
   });
+  console.log(topic);
 
   const toggleReply = () => {
     if (isReply) {
@@ -80,7 +82,7 @@ export default function SingleTopic({
                   </span> */}
                 </div>
                 <div className='flex space-x-2 text-xs'>
-                  <span>2h ago</span>{' '}
+                  <span>{relativeDate(topic.createdDate, true)} ago</span>{' '}
                   <div className='flex space-x-1 items-center'>
                     <BsEyeFill />
                     <span>{topic.viwes}</span>
