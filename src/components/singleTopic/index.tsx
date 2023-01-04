@@ -9,6 +9,12 @@ import TopicBottom from './topicBottom';
 import Replys from '../replys';
 import TopicCard from '../topicCard';
 import { relativeDate } from '../../utils/dayjs';
+import {
+  AiFillFacebook,
+  AiFillInstagram,
+  AiFillTwitterSquare,
+} from 'react-icons/ai';
+import { FaWhatsapp } from 'react-icons/fa';
 export interface SingleTopicProps {
   topic: any;
   topicLikes: any;
@@ -33,7 +39,7 @@ export default function SingleTopic({
   const Newtopics = topic.Category.topics.filter((newtopic: any) => {
     return newtopic.id !== topic.id;
   });
-  console.log(topic);
+  console.log(topic.upload);
 
   const toggleReply = () => {
     if (isReply) {
@@ -120,9 +126,8 @@ export default function SingleTopic({
               topic.trashed ? 'text-[#f50909]' : ''
             } text-justify text-sm leading-7 `}
           ></div>
-          <div id='ezoic-pub-ad-placeholder-609'> </div>
-          {topic.upload.lenght ? (
-            <div className='items-center w-full flex flex-col border border-black p-1 py-3 rounded-md my-4'>
+          {!topic.upload.lenght ? (
+            <div className='items-center w-full flex flex-col border border-black p-1 py-3 rounded-md'>
               {topic.upload.map((upload: any) => {
                 return (
                   <div
@@ -141,10 +146,36 @@ export default function SingleTopic({
               })}
             </div>
           ) : null}
+          <div className='mt-3'>
+            <div className='text-xl font-bold'> Connect with us</div>
+            <div className='flex justify-between px-1 space-x-1 border-black'>
+              <Link href={'https://www.facebook.com/Theunilorinforum'}>
+                <div className='p-10 border bg-slate-50'>
+                  <AiFillFacebook className='text-2xl' />
+                </div>
+              </Link>
+
+              <Link href={'https://twitter.com/unilorinforum'}>
+                <div className='p-10 border bg-slate-50'>
+                  <AiFillTwitterSquare className='text-2xl' />
+                </div>
+              </Link>
+
+              <div className='p-10 border bg-slate-50'>
+                <FaWhatsapp className='text-2xl' />
+              </div>
+              <div className='p-10 border bg-slate-50'>
+                <AiFillInstagram className='text-2xl' />
+              </div>
+            </div>
+          </div>
+          <div className='border' id='ezoic-pub-ad-placeholder-609'></div>
         </div>
       </div>
       <div className=' pb-60 '>
-        <h2 className='border-b mx-1 border-black'>--Related Topics</h2>
+        <h2 className='border-b px-3 w-fit flex items-center justify-center text-sm border-black'>
+          Topics Like this
+        </h2>
         {Newtopics.map((topic: any) => (
           <TopicCard key={topic.id} topic={topic} />
         ))}

@@ -19,8 +19,12 @@ export default function LeftSIdeBar({}: Props) {
 
   return (
     <div className='top-0 hidden md:sticky md:flex bottom-0  p-3  flex-col border-r-2 pr-16 pt-5 '>
-      <div className='pb-4 font-semibold text-3xl'>
-        <Link href={'/'}>RightApp</Link>
+      <div className='pb-4 text-center font-semibold text-3xl'>
+        <Link href={'/'}>
+          <a>
+            <Image src={'/uniforumlogo.png'} height={50} width={50} alt='' />
+          </a>
+        </Link>
       </div>
       <div className='mt-8 text-[#000]'>
         <div className='space-y-3'>

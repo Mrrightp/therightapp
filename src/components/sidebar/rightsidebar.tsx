@@ -5,7 +5,7 @@ type Props = {};
 
 export default function RightSideBar({}: Props) {
   return (
-    <div className='top-0 hidden md:block md:sticky  bottom-0 text- border-l pl-10 pt-2  '>
+    <div className='top-0 z-[-10] hidden md:block md:sticky  bottom-0 text- border-l pl-10 pt-2  '>
       <div className='flex flex-col space-y-4'>
         <span className='text-sm whitespace-nowrap '>
           Categories you might like

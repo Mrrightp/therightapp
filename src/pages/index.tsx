@@ -3,6 +3,7 @@ import HomePage from '../components/homePage';
 import axios from 'axios';
 import prisma from '../utils/prisma';
 import NotFound from '../components/404';
+import LandingComponent from '../components/landingComponents';
 
 export default function Name(props: any) {
   // const nameQuery = trpc.useQuery(["names.getName", { name: "nexxel" }]);
@@ -10,7 +11,7 @@ export default function Name(props: any) {
   if (props.topics) {
     return (
       <>
-        <div className='text'>
+        <div className='text '>
           <HomePage topics={props.topics} />
         </div>
       </>

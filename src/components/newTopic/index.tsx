@@ -201,7 +201,7 @@ export default function NewTopic({ topic }: any) {
   const handleCoverUpload = async (event: any) => {
     event.preventDefault();
     const ToastId = toast.loading(
-      'Publishing Material....., pls do not cloase this page, uploading may take some time',
+      'Publishing..... pls do not close this page uploading may take some time',
       {
         className: 'font-bold text-sm ',
         position: 'top-right',
