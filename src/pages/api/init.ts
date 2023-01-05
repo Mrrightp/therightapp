@@ -14,11 +14,11 @@ export default async function handler(
       data: [
         { title: 'Events', slug: 'events', forAdmin: false },
         { title: 'Gossip', slug: 'gossip', forAdmin: false },
-        { title: 'Story', slug: 'story', forAdmin: false },
-        { title: 'Sugestion', slug: 'sugestion', forAdmin: false },
-        { title: 'Just In', slug: 'news', forAdmin: true },
-        { title: 'Announcement', slug: 'announcement', forAdmin: true },
+        { title: 'Just In 🔥🔥', slug: 'news', forAdmin: true },
+        { title: 'Article', slug: 'article', forAdmin: false },
         { title: 'Sponsored', slug: 'sponsored', forAdmin: true },
+        { title: 'Sugestion', slug: 'sugestion', forAdmin: false },
+        { title: 'Announcement', slug: 'announcement', forAdmin: true },
         { title: 'Weekly Bulletin', slug: 'weekly-bulletin', forAdmin: true },
       ],
     });

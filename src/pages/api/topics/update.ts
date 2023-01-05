@@ -5,7 +5,13 @@ const wordCount = (str: string) => {
   const wordArray = str.split(' ');
   return wordArray.filter((word) => word !== '').length;
 };
-
+export const config = {
+  api: {
+    bodyParser: {
+      sizeLimit: '12mb', // Set desired value here
+    },
+  },
+};
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse

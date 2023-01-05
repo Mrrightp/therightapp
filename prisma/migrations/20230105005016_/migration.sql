@@ -50,6 +50,8 @@ CREATE TABLE "Topic" (
     "viwes" INTEGER DEFAULT 1,
     "categoryId" INTEGER,
     "shareCount" INTEGER DEFAULT 0,
+    "twitterEmbedLink" TEXT,
+    "metaDiscription" TEXT,
 
     CONSTRAINT "Topic_pkey" PRIMARY KEY ("id")
 );
@@ -124,6 +126,7 @@ CREATE TABLE "Material" (
     "authorId" INTEGER NOT NULL,
     "viwes" INTEGER DEFAULT 0,
     "courseCodeId" INTEGER NOT NULL,
+    "metaDiscription" TEXT,
 
     CONSTRAINT "Material_pkey" PRIMARY KEY ("id")
 );
