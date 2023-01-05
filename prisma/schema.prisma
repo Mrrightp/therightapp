@@ -70,27 +70,29 @@ enum Status {
 }
 
 model Topic {
-  id             Int              @id @default(autoincrement())
-  title          String
-  pinned         Boolean          @default(false)
-  slug           String           @unique
-  status         Status           @default(PENDING)
-  content        String
-  createdDate    DateTime?        @default(now())
-  updatedDate    DateTime?        @default(now())
-  author         User             @relation("wrtten topics", fields: [authorId], references: [id])
-  authorId       Int
-  coverImageUrl  String?
-  viwes          Int?             @default(1)
-  followers      User[]
-  Category       Category?        @relation(fields: [categoryId], references: [id])
-  categoryId     Int?
-  comments       Comment[]
-  likes          Topiclike[]
-  savedTopics    SavedTopics[]
-  savedMaterials SavedMaterials[]
-  shareCount     Int?             @default(0)
-  upload         TopicUpload[]
+  id               Int              @id @default(autoincrement())
+  title            String
+  pinned           Boolean          @default(false)
+  slug             String           @unique
+  status           Status           @default(PENDING)
+  content          String
+  createdDate      DateTime?        @default(now())
+  updatedDate      DateTime?        @default(now())
+  author           User             @relation("wrtten topics", fields: [authorId], references: [id])
+  authorId         Int
+  coverImageUrl    String?
+  viwes            Int?             @default(1)
+  followers        User[]
+  Category         Category?        @relation(fields: [categoryId], references: [id])
+  categoryId       Int?
+  comments         Comment[]
+  likes            Topiclike[]
+  savedTopics      SavedTopics[]
+  savedMaterials   SavedMaterials[]
+  shareCount       Int?             @default(0)
+  upload           TopicUpload[]
+  twitterEmbedLink String?
+  metaDiscription  String?
 }
 
 model SavedTopics {
@@ -147,24 +149,25 @@ model ReplyLike {
 }
 
 model Material {
-  id           Int            @id @default(autoincrement())
-  title        String
-  status       Status         @default(PENDING)
-  pinned       Boolean        @default(false)
-  slug         String         @unique
-  description  String
-  createdDate  DateTime?      @default(now())
-  updatedDate  DateTime?      @default(now())
-  author       User           @relation("wrttenMaterials", fields: [authorId], references: [id])
-  authorId     Int
-  viwes        Int?           @default(0)
-  comments     Comment[]
-  courseCode   CourseCode     @relation(fields: [courseCodeId], references: [id])
-  courseCodeId Int
-  faculty      Faculty[]
-  department   Department[]
-  materialLike materialLike[]
-  uploads      upload[]
+  id              Int            @id @default(autoincrement())
+  title           String
+  status          Status         @default(PENDING)
+  pinned          Boolean        @default(false)
+  slug            String         @unique
+  description     String
+  createdDate     DateTime?      @default(now())
+  updatedDate     DateTime?      @default(now())
+  author          User           @relation("wrttenMaterials", fields: [authorId], references: [id])
+  authorId        Int
+  viwes           Int?           @default(0)
+  comments        Comment[]
+  courseCode      CourseCode     @relation(fields: [courseCodeId], references: [id])
+  courseCodeId    Int
+  faculty         Faculty[]
+  department      Department[]
+  materialLike    materialLike[]
+  uploads         upload[]
+  metaDiscription String?
 }
 
 model TopicUpload {

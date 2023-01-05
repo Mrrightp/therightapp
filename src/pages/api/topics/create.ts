@@ -5,12 +5,22 @@ const wordCount = (str: string) => {
   const wordArray = str.split(' ');
   return wordArray.filter((word) => word !== '').length;
 };
+// /pages/api/upload.js
+
+export const config = {
+  api: {
+    bodyParser: {
+      sizeLimit: '12mb', // Set desired value here
+    },
+  },
+};
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   const body = req.body;
+  console.log(body);
   const regex = /(<([^>]+)>)/gi;
   const title = body.title
     .replace(/<\/?p[^>]*>/g, '')
@@ -34,8 +44,17 @@ export default async function handler(
       success: false,
       message: 'please select a category',
     });
+  } else if (wordCount(body.metaDiscription) < 6 || title == null) {
+    return res.json({
+      success: false,
+      message: 'Meta discription should be at least 6 words',
+    });
+  } else if (wordCount(body.metaDiscription) > 20 || title == null) {
+    return res.json({
+      success: false,
+      message: 'Meta discription should not be more than 20 words',
+    });
   }
-
   const getTopicSlugs = await prisma.topic.findUnique({
     where: {
       slug: topicSlug,
@@ -53,6 +72,7 @@ export default async function handler(
         data: {
           title: title,
           content: body.topicContent,
+          metaDiscription: body.metaDiscription,
           slug: topicSlug,
           Category: {
             connect: {

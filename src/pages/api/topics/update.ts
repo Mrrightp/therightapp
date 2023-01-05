@@ -34,6 +34,16 @@ export default async function handler(
       success: false,
       message: 'please select a category',
     });
+  } else if (wordCount(body.metaDiscription) < 6 || title == null) {
+    return res.json({
+      success: false,
+      message: 'Meta discription should be at least 6 words',
+    });
+  } else if (wordCount(body.metaDiscription) > 20 || title == null) {
+    return res.json({
+      success: false,
+      message: 'Meta discription should not be more than 20 words',
+    });
   }
   if (false) {
   } else {

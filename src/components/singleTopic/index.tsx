@@ -103,7 +103,7 @@ export default function SingleTopic({
           {topic.coverImageUrl ? (
             <div className='relative md:h-[300px] w-full h-[200px]'>
               <Image
-                src={`${process.env.NEXT_PUBLIC_FILE_API_URL}/user/coverimage/${topic.coverImageUrl}`}
+                src={`${process.env.NEXT_PUBLIC_FILE_API_URL}/topic/coverimage/${topic.coverImageUrl}`}
                 layout='fill'
                 className='absolute object-cover'
                 alt={topic.title}
@@ -126,54 +126,49 @@ export default function SingleTopic({
               topic.trashed ? 'text-[#f50909]' : ''
             } text-justify text-sm leading-7 `}
           ></div>
-          {!topic.upload.lenght ? (
-            <div className='items-center w-full flex flex-col border border-black p-1 py-3 rounded-md'>
-              {topic.upload.map((upload: any) => {
-                return (
-                  <div
-                    className='border-black p-1 py-3 rounded-md'
-                    key={upload.id}
-                  >
-                    <Image
-                      src={`${process.env.NEXT_PUBLIC_FILE_API_URL}/topic/${upload.link}`}
-                      alt=''
-                      width={400}
-                      height={200}
-                      className='object-cover'
-                    />
-                  </div>
-                );
-              })}
-            </div>
-          ) : null}
           <div className='mt-3'>
             <div className='text-xl font-bold'> Connect with us</div>
-            <div className='flex justify-between px-1 space-x-1 border-black'>
-              <Link href={'https://www.facebook.com/Theunilorinforum'}>
-                <div className='p-10 border bg-slate-50'>
-                  <AiFillFacebook className='text-2xl' />
+            <div className='flex mt-10 justify-between px-1 space-x-1 border-black'>
+              <Link
+                target={'_blank'}
+                href={'https://www.facebook.com/Theunilorinforum'}
+              >
+                <div className='p-10 rounded-xl border bg-slate-50'>
+                  <AiFillFacebook className='text-2xl ' />
                 </div>
               </Link>
 
-              <Link href={'https://twitter.com/unilorinforum'}>
-                <div className='p-10 border bg-slate-50'>
-                  <AiFillTwitterSquare className='text-2xl' />
+              <Link
+                target={'_blank'}
+                href={'https://twitter.com/unilorinforum'}
+              >
+                <div className='p-10 rounded-xl border bg-slate-50'>
+                  <AiFillTwitterSquare className='text-2xl ' />
                 </div>
               </Link>
-
-              <div className='p-10 border bg-slate-50'>
-                <FaWhatsapp className='text-2xl' />
-              </div>
-              <div className='p-10 border bg-slate-50'>
-                <AiFillInstagram className='text-2xl' />
-              </div>
+              <Link
+                target={'_blank'}
+                href={'https://twitter.com/unilorinforum'}
+              >
+                <div className='p-10 rounded-xl border bg-slate-50'>
+                  <FaWhatsapp className='text-2xl ' />
+                </div>
+              </Link>
+              <Link
+                target={'_blank'}
+                href={'https://www.instagram.com/unilorinforum/'}
+              >
+                <div className='p-10 rounded-xl border bg-slate-50'>
+                  <AiFillInstagram className='text-2xl ' />
+                </div>
+              </Link>
             </div>
           </div>
-          <div className='border' id='ezoic-pub-ad-placeholder-609'></div>
+          <div className='' id='ezoic-pub-ad-placeholder-609'></div>
         </div>
       </div>
       <div className=' pb-60 '>
-        <h2 className='border-b px-3 w-fit flex items-center justify-center text-sm border-black'>
+        <h2 className='border-b px-3 w-fit flex items-center justify-center ml-8 text-sm border-[#b6b309]'>
           Topics Like this
         </h2>
         {Newtopics.map((topic: any) => (

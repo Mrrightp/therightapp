@@ -32,10 +32,13 @@
     "react-draft-wysiwyg": "^1.15.0",
     "react-hot-toast": "^2.4.0",
     "react-icons": "^4.4.0",
+    "react-quill": "^2.0.0",
     "react-select": "^5.4.0",
     "react-social-media-embed": "^2.2.9",
     "react-toastify": "^9.0.8",
+    "react-twitter-embed": "^4.0.4",
     "slugify": "^1.6.5",
+    "tw-elements": "^1.0.0-alpha13",
     "uuid": "^9.0.0",
     "zod": "^3.19.1"
   },

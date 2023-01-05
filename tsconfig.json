@@ -28,7 +28,8 @@
     "src/pages/api/uploads/coverimage.ts",
     "src/components/newTopic/textArea.jsx",
     "src/components/newTopic/index.tsx",
-    "server.js"
+    "server.js",
+    "src/pages/test.jsx"
   ],
   "exclude": ["node_modules"]
 }

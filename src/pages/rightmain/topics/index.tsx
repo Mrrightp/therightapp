@@ -10,7 +10,7 @@ type Props = {
 export default function index({ topicsData }: Props) {
   return (
     <>
-      <div className='w-full'>
+      <div className='w-full pb-96'>
         <div className='text-center items-center justify-center flex text-xl font-semibold bg-black text-white h-[60px]'>
           User Page
         </div>

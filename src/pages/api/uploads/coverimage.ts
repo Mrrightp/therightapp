@@ -28,7 +28,7 @@ export default async function handler(
     const imgUrl = `${year}/${id}-${name}`;
     const fileParams = {
       Bucket: process.env.BUKETNAME,
-      Key: `user/coverimage/${imgUrl}`,
+      Key: `topic/coverimage/${imgUrl}`,
       Expires: 600,
       ContentType: type,
     };

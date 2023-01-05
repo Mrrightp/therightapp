@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect } from 'react';
+import Head from 'next/head';
 import NotFound from '../../components/404';
 import SingleTopic from '../../components/singleTopic/index';
 import prisma from '../../utils/prisma';
@@ -26,16 +27,28 @@ export default function SingleTopicPage({
       addViwe();
     }
   });
+  console.log(topic);
 
   if (topic) {
     return (
-      <div>
-        <SingleTopic
-          topicSaved={topicSaved}
-          topicLikes={topicLikes}
-          topic={topic}
-        />
-      </div>
+      <>
+        <Head>
+          <title>{topic.title}</title>
+          <meta name='keywords' content={`${topic.title}`} />
+          <meta name='description' content={topic.metaDiscription} />
+          <meta
+            property='og:image'
+            content={`${process.env.NEXT_PUBLIC_FILE_API_URL}/topic/coverimage/${topic.coverImageUrl}`}
+          />
+        </Head>
+        <div>
+          <SingleTopic
+            topicSaved={topicSaved}
+            topicLikes={topicLikes}
+            topic={topic}
+          />
+        </div>
+      </>
     );
   } else {
     return <NotFound />;

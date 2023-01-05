@@ -80,7 +80,7 @@ export default function TopicCard({ topic }: TopicCardProps) {
           </h2>
         </div>
         <div className='topic-card-excerpt pb-2 justify-between text-justify flex text-xs mt-1 '>
-          <div>{removeHtml(trimString(topic.content, 170))} ...</div>
+          <div>{topic.metaDiscription}</div>
         </div>
         {topic.coverImageUrl ? (
           <div className=''>
@@ -88,7 +88,7 @@ export default function TopicCard({ topic }: TopicCardProps) {
               className='rounded-lg object-cover'
               width={500}
               height={250}
-              src={`${process.env.NEXT_PUBLIC_FILE_API_URL}/user/coverimage/${topic.coverImageUrl}`}
+              src={`${process.env.NEXT_PUBLIC_FILE_API_URL}/topic/coverimage/${topic.coverImageUrl}`}
               alt='avatar'
             />
           </div>
