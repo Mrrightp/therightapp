@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Script from 'next/script';
+import Router from 'next/router';
 
 function Layout({ children, title = process.env.APP_NAME }) {
   return (
@@ -30,7 +31,22 @@ function Layout({ children, title = process.env.APP_NAME }) {
         <meta name='robots' content='index, follow' />
         <meta httpEquiv='Content-Type' content='text/html; charset=utf-8' />
         <meta name='language' content='English' />
-        <meta name='author' content='Author Name' />
+        <meta name='author' content='Mr Right' />
+        <meta name='twitter:card' content='summary' key='twcard' />
+        <meta
+          name='twitter:creator'
+          content={'https://twitter.com/unilorinforum'}
+          key='twhandle'
+        />
+
+        {/* Open Graph */}
+        <meta property='og:url' content={Router.asPath} key='ogurl' />
+        <meta
+          property='og:site_name'
+          content={'Unilorin Forum'}
+          key='ogsitename'
+        />
+
         <title>{title}</title>
       </Head>
       {children}

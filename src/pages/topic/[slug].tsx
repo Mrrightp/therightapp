@@ -33,6 +33,31 @@ export default function SingleTopicPage({
     return (
       <>
         <Head>
+          <meta name='twitter:card' content='summary' key='twcard' />
+          <meta
+            name='twitter:creator'
+            content={'https://twitter.com/unilorinforum'}
+            key='twhandle'
+          />
+
+          {/* Open Graph */}
+          <meta property='og:url' content={topic.slug} key='ogurl' />
+          <meta
+            property='og:image'
+            content={`${process.env.NEXT_PUBLIC_FILE_API_URL}/topic/coverimage/${topic.coverImageUrl}`}
+            key='ogimage'
+          />
+          <meta
+            property='og:site_name'
+            content={'Unilorin Forum'}
+            key='ogsitename'
+          />
+          <meta property='og:title' content={topic.title} key='ogtitle' />
+          <meta
+            property='og:description'
+            content={topic.metaDiscription}
+            key='ogdesc'
+          />
           <title>{topic.title}</title>
           <meta name='keywords' content={`${topic.title}`} />
           <meta name='description' content={topic.metaDiscription} />
