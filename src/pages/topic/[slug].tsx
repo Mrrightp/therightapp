@@ -4,6 +4,7 @@ import Head from 'next/head';
 import NotFound from '../../components/404';
 import SingleTopic from '../../components/singleTopic/index';
 import prisma from '../../utils/prisma';
+import useAuth from '../../../hooks/useAuth';
 type Props = {
   topic: any;
   topicLikes: object;
@@ -15,6 +16,7 @@ export default function SingleTopicPage({
   topicLikes,
   topicSaved,
 }: Props) {
+  const { auth }: any = useAuth();
   useEffect(() => {
     if (topic) {
       const addViwe = async () => {
@@ -27,9 +29,10 @@ export default function SingleTopicPage({
       addViwe();
     }
   });
-  console.log(topic);
-
-  if (topic) {
+  console.log(topic, auth);
+  if (topic.status == 'TRASHED' && !(auth.role == 'ADMIN')) {
+    return <NotFound />;
+  } else if (topic) {
     return (
       <>
         <Head>

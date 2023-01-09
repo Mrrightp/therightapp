@@ -40,7 +40,6 @@ function Layout({ children, title = process.env.APP_NAME }) {
         />
 
         {/* Open Graph */}
-        <meta property='og:url' content={Router.asPath} key='ogurl' />
         <meta
           property='og:site_name'
           content={'Unilorin Forum'}

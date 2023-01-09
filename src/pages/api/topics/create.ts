@@ -47,12 +47,14 @@ export default async function handler(
   } else if (wordCount(body.metaDiscription) < 6 || title == null) {
     return res.json({
       success: false,
-      message: 'Meta discription should be at least 6 words',
+      message:
+        'Meta discription should be at least 6 words, you can copy and paste the first two lines of your article',
     });
   } else if (wordCount(body.metaDiscription) > 20 || title == null) {
     return res.json({
       success: false,
-      message: 'Meta discription should not be more than 20 words',
+      message:
+        'Meta discription should not be more than 20 words, you can copy and paste only the first two lines of your article',
     });
   }
   const getTopicSlugs = await prisma.topic.findUnique({
