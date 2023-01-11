@@ -28,6 +28,11 @@ function Layout({ children, title = process.env.APP_NAME }) {
       ></Script>
       <Head>
         <link rel='shortcut icon' href={'/static/favicon.svg'} />
+        <script
+          async
+          src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3516539915963682'
+          crossorigin='anonymous'
+        ></script>
         <meta name='robots' content='index, follow' />
         <meta httpEquiv='Content-Type' content='text/html; charset=utf-8' />
         <meta name='language' content='English' />
